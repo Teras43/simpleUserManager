@@ -1,11 +1,19 @@
 html
     head
+    script(defer, src="./generalFunc.js")
     body
+        form(method="get", action="/")
+            button(id="back", type="submit") Back
         table
             tr
-                th ID
                 th Name
                 th Email
                 th Age
-            tr
-                td #{id}
+            each user in data
+                tr
+                    td #{user.name}
+                    td #{user.email}
+                    td #{user.age}
+                    td
+                        button(type="button", onclick=`goToEdit('${user.id}')`) Edit
+                        button(type="button", onclick=`deleteUser('${user.id}')`) Delete
